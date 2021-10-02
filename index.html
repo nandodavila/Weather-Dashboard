@@ -26,9 +26,9 @@
             <form>
                 <div class="form-group">
                 <label for="city-search">Search for a City:</label>
-                <input type="email" class="form-control" id="city-search">
+                <input type="city" class="form-control" id="city-search">
                 </div>
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn btn-primary search-button">Search</button>
             </form>
             <ul class = city-buttons>
                 <li></li>
@@ -38,25 +38,28 @@
                 <li></li>
             </ul>
         </div>
+
         <div class="col-9 px-md-4">
             <div class="jumbotron">
                 <h1 class="display-4"><div class="city-name">Remove Later</div></h1>
                 <p class="lead"><div class="temp">Temp: Remove Later</div></p>
                 <p class="lead"><div class="wind">Wind: Remove Later</div></p>
-                <p class="lead"><div class="temp">Humidity: Remove Later</div></p>
-                <p class="lead"><div class="temp">UV index: Remove Later</div></p>
+                <p class="lead"><div class="humidity">Humidity: Remove Later</div></p>
+                <p class="lead"><div class="uv-index">UV index: Remove Later</div></p>
                 <hr class="my-4">
             </div>
-            <div class = "5-day">
+            <div class = "5-day-container">
                 <h1>5-day Forecast:</h1>
-                <ul class="list-group list-group-horizontal-md">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A third item</li>
-                </ul>
+                <div class="list-group list-group-horizontal-md five-day">
+                </div>
             </div> 
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    ></script>
+    <script type="text/javascript" src="./assets/js/script.js"></script>
 </body>
