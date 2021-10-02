@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dashboard!</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" 
+  rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+
+<header>
+    <div class="jumbotron jumbotron-fluid mw-100 border border-primary">
+        <div class="container">
+            <h1 class="display-4">Weather Dashboard</h1>
+            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        </div>
+        </div>
+</header>
+
+<body>
+    <div class = "row">
+        <div class="col-3 px-md-4">
+            <form>
+                <div class="form-group">
+                <label for="city-search">Search for a City:</label>
+                <input type="email" class="form-control" id="city-search">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+            <ul class = city-buttons>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="col-9 px-md-4">
+            <div class="jumbotron">
+                <h1 class="display-4"><div class="city-name">Remove Later</div></h1>
+                <p class="lead"><div class="temp">Temp: Remove Later</div></p>
+                <p class="lead"><div class="wind">Wind: Remove Later</div></p>
+                <p class="lead"><div class="temp">Humidity: Remove Later</div></p>
+                <p class="lead"><div class="temp">UV index: Remove Later</div></p>
+                <hr class="my-4">
+            </div>
+            <div class = "5-day">
+                <h1>5-day Forecast:</h1>
+                <ul class="list-group list-group-horizontal-md">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+            </div> 
+        </div>
+    </div>
+</body>
