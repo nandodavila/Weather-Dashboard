@@ -27,43 +27,33 @@ function handleFetch() {
                     return response1.json();
                 })
                 .then(function(data1){
-                    console.log(data1)
-                    console.log(data1.daily[0].weather)
                     var temp = data1.daily[0].temp.day
                     var wind = data1.daily[0].wind_speed
                     var humidity = data1.daily[0].humidity
                     var uvIndex = data1.daily[0].uvi
                     displayTemp.textContent = "Temp: " + temp + "°F";
                     displayWind.textContent = "Wind: " + wind + "MPH";
-                    displayHumidity.textContent = "Humidity: " + humidity +"%"
-                    displayUV.textContent = "UV index: " + uvIndex
+                    displayHumidity.textContent = "Humidity: " + humidity +"%";
+                    displayUV.textContent = "UV index: " + uvIndex;
                     for (i = 0; i < data1.daily.length - 3; i++) {
-                        var dailyWeather = document.createElement('div')
-                        fiveDay.appendChild(dailyWeather)
-                        dailyWeather.className = "list-group-item"
-                        var fiveDayDate = document.createElement('h1')
-                        var fiveDayTemp = document.createElement('li')
-                        var fiveDayHumid = document.createElement('li')
-                        var fiveDayWind = document.createElement('li')
-                        dailyWeather.appendChild(fiveDayDate)
-                        dailyWeather.appendChild(fiveDayTemp)
-                        dailyWeather.appendChild(fiveDayHumid)
-                        dailyWeather.appendChild(fiveDayWind)
-                        console.log(moment(data1.daily[i].dt))
-                        fiveDayDate.textContent = moment(data1.daily[i].dt).format('MM-DD-YYYY')
-                        fiveDayTemp.textContent = "Temp: " + data1.daily[i].temp.day + "°F"
-                        fiveDayWind.textContent = "Wind: " + data1.daily[i].wind_speed + "MPH"
-                        fiveDayHumid.textContent = "Humidity: " + data1.daily[i].humidity + "%"
-                        
-                    }
-                    
-
-
-                
+                        var dailyWeather = document.createElement('div');
+                        fiveDay.appendChild(dailyWeather);
+                        dailyWeather.className = "list-group-item";
+                        var fiveDayDate = document.createElement('h1');
+                        var fiveDayTemp = document.createElement('li');
+                        var fiveDayHumid = document.createElement('li');
+                        var fiveDayWind = document.createElement('li');
+                        dailyWeather.appendChild(fiveDayDate);
+                        dailyWeather.appendChild(fiveDayTemp);
+                        dailyWeather.appendChild(fiveDayHumid);
+                        dailyWeather.appendChild(fiveDayWind);
+                        fiveDayDate.textContent = moment(data1.daily[i].dt, 'X').format('MM-DD-YYYY');
+                        fiveDayTemp.textContent = "Temp: " + data1.daily[i].temp.day + "°F";
+                        fiveDayWind.textContent = "Wind: " + data1.daily[i].wind_speed + "MPH";
+                        fiveDayHumid.textContent = "Humidity: " + data1.daily[i].humidity + "%";
+                    };                
                 });
-
-        });
-        
+        });        
 };
 
 handleFetch();
