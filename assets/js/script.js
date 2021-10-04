@@ -35,6 +35,11 @@ function handleFetch() {
                     displayWind.textContent = "Wind: " + wind + "MPH";
                     displayHumidity.textContent = "Humidity: " + humidity +"%";
                     displayUV.textContent = "UV index: " + uvIndex;
+                    var mainIcon = data1.daily[0].weather[0].icon;
+                    var mainIconUrl = "http://openweathermap.org/img/wn/" + mainIcon + "@2x.png ";
+                    var mainIconDisplay = document.createElement('img');
+                    mainIconDisplay.setAttribute('src', mainIconUrl)
+                    displayCity.appendChild(mainIconDisplay)
                     for (i = 0; i < data1.daily.length - 3; i++) {
                         var dailyWeather = document.createElement('div');
                         fiveDay.appendChild(dailyWeather);
@@ -43,7 +48,12 @@ function handleFetch() {
                         var fiveDayTemp = document.createElement('li');
                         var fiveDayHumid = document.createElement('li');
                         var fiveDayWind = document.createElement('li');
+                        var icon = data1.daily[i].weather[0].icon
+                        var iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png ";
+                        var iconDisplay = document.createElement('img');
+                        iconDisplay.setAttribute('src', iconUrl)
                         dailyWeather.appendChild(fiveDayDate);
+                        dailyWeather.appendChild(iconDisplay)
                         dailyWeather.appendChild(fiveDayTemp);
                         dailyWeather.appendChild(fiveDayHumid);
                         dailyWeather.appendChild(fiveDayWind);
