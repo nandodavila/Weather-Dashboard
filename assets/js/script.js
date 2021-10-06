@@ -6,20 +6,20 @@ var displayWind = document.querySelector('.wind')
 var displayHumidity = document.querySelector('.humidity')
 var displayUV = document.querySelector('.uv-index')
 var fiveDay = document.querySelector('.five-day')
-// console.log(searchInput.value)
-// searchBtn.addEventListener('click', handleFetch);
 
 
-function handleFetch() {
-    // if (searchInput.value == null) {
-    //     console.log(searchInput.value)
-    //     alert("City not found, please try again")
-    //     return;
-    // } else {
-    //     debugger
-        console.log(searchInput)
+searchBtn.addEventListener('click', handleFetch);
+
+
+function handleFetch(event) {
+    event.preventDefault();
+    if (searchInput.value == null) {
+        console.log(searchInput.value);
+        alert("City not found, please try again");
+        return;
+    } else {
         var requestCityUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + "&appid=d533a66f01bd57392f57e1bb1973e60e";
-        console.log(requestCityUrl)
+        console.log(requestCityUrl);
         fetch(requestCityUrl)
             .then(function(response){
                 return response.json();
@@ -73,6 +73,5 @@ function handleFetch() {
                     });
             });        
     };
-// }
+}
 
-handleFetch();
