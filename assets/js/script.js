@@ -1,11 +1,13 @@
-var searchBtn = document.querySelector('.search-button')
-var searchInput = document.getElementById('city-search')
-var displayTemp = document.querySelector('.temp')
-var displayCity = document.querySelector('.city-name')
-var displayWind = document.querySelector('.wind')
-var displayHumidity = document.querySelector('.humidity')
-var displayUV = document.querySelector('.uv-index')
-var fiveDay = document.querySelector('.five-day')
+var searchBtn = document.querySelector('.search-button');
+var searchInput = document.getElementById('city-search');
+var displayTemp = document.querySelector('.temp');
+var displayCity = document.querySelector('.city-name');
+var displayWind = document.querySelector('.wind');
+var displayHumidity = document.querySelector('.humidity');
+var displayUV = document.querySelector('.uv-index');
+var fiveDay = document.querySelector('.five-day');
+var citySearched = [];
+
 
 
 searchBtn.addEventListener('click', handleFetch);
@@ -18,6 +20,9 @@ function handleFetch(event) {
         alert("City not found, please try again");
         return;
     } else {
+        citySearched.push(searchInput.value)
+        getCityLocal();
+        setCityLocal();
         var requestCityUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + "&appid=d533a66f01bd57392f57e1bb1973e60e";
         console.log(requestCityUrl);
         fetch(requestCityUrl)
@@ -75,3 +80,20 @@ function handleFetch(event) {
     };
 }
 
+function setCityLocal() {
+    localStorage.setItem('citySearched', JSON.stringify(citySearched))
+
+}
+
+function getCityLocal() {
+    var storedCity = localStorage.getItem("citySearched")
+    if (storedCity) {
+        citySearched = JSON.parse(storedCity)
+    }
+}
+
+function cityButtons(){
+    if (citySearched > 0) {
+        var         
+    }
+}
