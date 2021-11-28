@@ -6,7 +6,9 @@ var displayWind = document.querySelector('.wind');
 var displayHumidity = document.querySelector('.humidity');
 var displayUV = document.querySelector('.uv-index');
 var fiveDay = document.querySelector('.five-day');
+var cityList = document.querySelector('.city-list')
 var citySearched = [];
+var localCitySearched = [];
 
 
 
@@ -16,13 +18,13 @@ searchBtn.addEventListener('click', handleFetch);
 function handleFetch(event) {
     event.preventDefault();
     if (searchInput.value == null) {
-        console.log(searchInput.value);
         alert("City not found, please try again");
         return;
     } else {
         citySearched.push(searchInput.value)
-        getCityLocal();
+        cityButtons();
         setCityLocal();
+        getCityLocal();   
         var requestCityUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + "&appid=d533a66f01bd57392f57e1bb1973e60e";
         console.log(requestCityUrl);
         fetch(requestCityUrl)
@@ -88,12 +90,23 @@ function setCityLocal() {
 function getCityLocal() {
     var storedCity = localStorage.getItem("citySearched")
     if (storedCity) {
-        citySearched = JSON.parse(storedCity)
+        localCitySearched = JSON.parse(storedCity)
+        console.log(localCitySearched)
     }
 }
 
 function cityButtons(){
-    if (citySearched > 0) {
-        var         
+    var clearButtons = document.querySelectorAll(".city-buttons")
+    for (let i = 0; i< clearButtons.length; i++) {
+        clearButtons[i].remove();
     }
+    if (localCitySearched.length > 0) {
+        for (i = 0; i < localCitySearched.length; i++) {
+        var cityBtn = document.createElement('button');
+        cityList.appendChild(cityBtn)
+        cityBtn.innerHTML = localCitySearched[i]
+        cityBtn.className = 'city-buttons'
+        console.log(localCitySearched[i].value)
+    }
+}
 }
