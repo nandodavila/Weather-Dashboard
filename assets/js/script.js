@@ -9,14 +9,22 @@ var fiveDay = document.querySelector('.five-day');
 var cityList = document.querySelector('.city-list')
 var citySearched = [];
 var localCitySearched = [];
-var activeCityBtn = document.querySelectorAll(".city-buttons")
 
 
-
-searchBtn.addEventListener('click', handleFetch);
-// activeCityBtn.addEventListener('click', handleSearch(activeCityBtn.textContent));
 getCityLocal();
 cityButtons();
+
+var activeCityBtn = document.querySelectorAll(".city-buttons")
+searchBtn.addEventListener('click', handleFetch);
+cityBtnEventListener();
+function cityBtnEventListener() {
+    activeCityBtn.forEach(btn => {
+        btn.addEventListener('click', handleCityBtnFetch);        
+    });
+}
+
+
+
 
 function handleFetch(event) {
     event.preventDefault();
@@ -26,7 +34,22 @@ function handleFetch(event) {
     } else {
         citySearched.push(searchInput.value)
         handleSearch(searchInput.value)
-              
+        getCityLocal();
+        cityButtons();      
+    };
+}
+
+function handleCityBtnFetch(event) {
+    event.preventDefault();
+    if (event.target.innerHTML == null) {
+        alert("City not found, please try again");
+        return;
+    } else {
+        citySearched.push(event.target.innerHTML)
+        handleSearch(event.target.innerHTML)
+        getCityLocal();
+        cityButtons();
+            
     };
 }
 
@@ -58,6 +81,10 @@ function cityButtons(){
 }
 
 function handleSearch(searched){
+    var removeLi = document.querySelectorAll(".list-group-item")
+    for (let i = 0; i< removeLi.length; i++) {
+        removeLi[i].remove();
+    }
     console.log(searched);
     getCityLocal();
     cityButtons();
